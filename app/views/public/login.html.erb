@@ -1,0 +1,10 @@
+<h1>Welcome to Chameleon Girls!</h1>
+<h2>Login to see girls change their colour to blend into their environment.</h2>
+
+<%= form_tag action:'authenticate' do %>
+	Email: <%= text_field_tag :email %>
+	<br/>
+	Password: <%= password_field_tag :password %>
+	<br/>
+	<%= submit_tag 'Login' %>
+<% end %>

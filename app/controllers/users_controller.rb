@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_and_load_user
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -59,6 +61,13 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # Clear the session, send the user to a public destination.
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = 'You have been logged out.'
+    redirect_to '/'
   end
 
   private

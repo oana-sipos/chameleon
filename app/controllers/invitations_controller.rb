@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  before_filter :authenticate_and_load_user
+  
   before_action :set_invitation, only: [:show, :edit, :update, :destroy]
 
   # GET /invitations
