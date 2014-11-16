@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get  "public/create"
   post "public/create"
 
+  # Needed to support FB callbacks, this is where the Facebook authorisation process starts.
+  match '/auth/facebook/callback' => 'public#fb_callback', via: [:get]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

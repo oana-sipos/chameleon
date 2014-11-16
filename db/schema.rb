@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112115621) do
+ActiveRecord::Schema.define(version: 20141116131845) do
 
   create_table "events", force: true do |t|
     t.string   "title",      limit: 255
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141112115621) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "password_digest", limit: 255
+    t.string   "facebook_uid",    limit: 255
   end
 
 end

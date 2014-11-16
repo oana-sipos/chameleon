@@ -16,3 +16,6 @@ config/database.yml
 
 db/schema.rb
 Gemfile.lock
+
+# Ignore the Facebook config file.
+config/facebook.yml

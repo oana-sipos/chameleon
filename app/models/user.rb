@@ -18,16 +18,29 @@ class User < ActiveRecord::Base
 
   validates :terms_of_service, acceptance:{message:'You must accept our Terms of Service.'}
 
+  attr_accessor :skip_password_validation # useful to create users without a password, for instance via Facebook.
+
   # has_secure_password validations rewritten below:
-  validates :password, presence:{message:'Please enter a password. It must have at least 6 characters.'}, on: :create
+  validates :password, presence:{message:'Please enter a password. It must have at least 6 characters.'}, on: :create, unless:Proc.new { |u| u.skip_password_validation }
   validates :password, confirmation:{message:"Passwords don't match"}, if: lambda { |u| u.password.present? }
   validates :password_confirmation, presence:{message:'Please enter the password again'},  if: lambda { |u| u.password.present? }
   # end of h_s_p rewrites
 
+  # Generate a string that tries to have the first and last name connected with a whitespace,
+  # but also copes with one or both of them missing.
   def full_name
   	([first_name, last_name].compact-['']).join(' ')
   end
 	
+	# Creates a user based on the hash of information that Facebook sends us.
+	# User will have a nil password.
+	def self.create_from_facebook(hash)
+		self.create facebook_uid: hash['uid'],
+                       email: hash['info']['email'],
+                  first_name: hash['info']['first_name'],
+                   last_name: hash['info']['last_name'],
+    skip_password_validation: true
+  end
 
 	#########################
 	private

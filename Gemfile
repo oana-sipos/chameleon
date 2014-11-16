@@ -24,3 +24,6 @@ end
 
 # Use ActiveModel's has_secure_password (alxx)
 gem 'bcrypt', '~> 3.1.2'
+
+# Use this gem to permit Facebook authorisation. (alxx)
+gem 'omniauth-facebook'
