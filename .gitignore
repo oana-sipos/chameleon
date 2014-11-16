@@ -13,3 +13,6 @@
 
 # Ignore database.yml file
 config/database.yml
+
+db/schema.rb
+Gemfile.lock

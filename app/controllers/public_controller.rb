@@ -5,6 +5,20 @@ class PublicController < ApplicationController
 	def login
 	end
 
+  def create
+    if request.get?
+      @user = User.new
+    else
+      @user = User.new user_params
+
+      if @user.save
+        flash[:notice] = "Account created successfully."
+        session[:user_id] = @user.id
+        redirect_to action:'index', controller:'events'
+      end
+    end
+  end
+
 	# Called by the login form. Tries to find the user by email and authenticate them;
 	# if the authentication works, redirects to someplace private in the UsersController
   def authenticate
@@ -38,4 +52,11 @@ class PublicController < ApplicationController
   		redirect_to action:'login'
   	end
   end
+
+  #######################
+  private
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :terms_of_service)
+    end
 end

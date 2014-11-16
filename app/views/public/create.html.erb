@@ -1,0 +1,30 @@
+<h1>Sign up to become a Chameleon Girl.</h1>
+
+<%= form_for :user do |f| %>
+	First name: <%= f.text_field :first_name %>
+	<%= errors_for @user, :first_name %>
+	<br/>
+
+	Last name: <%= f.text_field :last_name %>
+	<%= errors_for @user, :last_name %>
+	<br/>
+
+	Email: <%= f.text_field :email %>
+	<%= errors_for @user, :email %>
+	<br/>
+
+	Password: <%= f.password_field :password %>
+	<%= errors_for @user, :password %>
+	<br/>
+
+	Password again: <%= f.password_field :password_confirmation %>
+	<%= errors_for @user, :password_confirmation %>
+	<br/>
+
+	The small print looks fine to me: <%= f.check_box :terms_of_service %>
+	<%= errors_for @user, :terms_of_service %>
+	<br/>
+
+	<%= f.submit 'Create' %>
+
+<% end %>

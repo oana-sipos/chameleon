@@ -13,42 +13,39 @@
 
 ActiveRecord::Schema.define(version: 20141112115621) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "events", force: true do |t|
-    t.string   "title"
-    t.string   "city"
-    t.string   "country"
+    t.string   "title",      limit: 255
+    t.string   "city",       limit: 255
+    t.string   "country",    limit: 255
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "feedbacks", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "event_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "invitations", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "event_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "tshirt_size"
-    t.string   "diet"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
+    t.string   "first_name",      limit: 255
+    t.string   "last_name",       limit: 255
+    t.string   "email",           limit: 255
+    t.string   "tshirt_size",     limit: 255
+    t.string   "diet",            limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "password_digest", limit: 255
   end
 
 end

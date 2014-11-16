@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :events
 
   get "users/logout"
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,7 +14,8 @@ Rails.application.routes.draw do
   root 'public#login'
 
   post "public/authenticate"
-
+  get  "public/create"
+  post "public/create"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
