@@ -67,7 +67,6 @@ class PublicController < ApplicationController
       # This happens in the "edit my profile" context, where the logged in user simply associates
       # their Chameleon account to their Facebook account (meaning, their facebook_uid gets set in the
       # `users` table).
-      logger.info "------ edit profile context -------"
       logged_in_user.update_attribute :facebook_uid, fb_uid
       redirect_to action:'index', controller:'events' # TODO: for now, go to Events#index, but should go to the My Profile page once we have that.
 
@@ -89,10 +88,6 @@ class PublicController < ApplicationController
           return
         end
       end
-
-      logger.info "user with email exists" if user_with_email
-      logger.info "user with fbuid exists" if user_with_uid
-      logger.info "this is a new user" if new_user
 
       # By now, the user is either new, or we're logging in a user who has the same UID as the one from Facebook,
       # or we're logging in someone with the same email.
