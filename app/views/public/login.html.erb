@@ -10,7 +10,11 @@
 		<%= submit_tag 'Login' %>
 	<% end %>
 
-	<h3>No account? <%= link_to 'Create one', action:'create', controller:'public' %>.
-		No time for signup forms? <%= link_to 'Get in using Facebook', '/auth/facebook' %>.
-	</h3>
+	<div class="col-md-4 col-md-offset-4">
+	No account? 
+	<%= button_to 'Create free account', new_user_path, class: 'btn btn-success', method: 'get', action:'create', controller:'public' %>
+	<br \>
+	No time for signup forms? 
+	<%= button_to 'Sign in via Facebook', auth_facebook_callback_path, class: 'btn btn-success', method: 'get' %>
+	</div>
 </div>
