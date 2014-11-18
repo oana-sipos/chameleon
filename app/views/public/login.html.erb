@@ -1,14 +1,16 @@
-<h1>Welcome to Chameleon Girls!</h1>
-<h2>Login to see girls change their colour to blend into their environment.</h2>
+<div class="col-md-8 col-md-offset-2">
+	<h1>Welcome to Chameleon Girls!</h1>
+	<h2>Login to see girls change their colour to blend into their environment.</h2>
 
-<%= form_tag action:'authenticate' do %>
-	Email: <%= text_field_tag :email %>
-	<br/>
-	Password: <%= password_field_tag :password %>
-	<br/>
-	<%= submit_tag 'Login' %>
-<% end %>
+	<%= form_tag action:'authenticate' do %>
+		Email: <%= text_field_tag :email %>
+		<br/>
+		Password: <%= password_field_tag :password %>
+		<br/>
+		<%= submit_tag 'Login' %>
+	<% end %>
 
-<h3>No account? <%= link_to 'Create one', action:'create', controller:'public' %>.
-	No time for signup forms? <%= link_to 'Get in using Facebook', '/auth/facebook' %>.
-</h3>
+	<h3>No account? <%= link_to 'Create one', action:'create', controller:'public' %>.
+		No time for signup forms? <%= link_to 'Get in using Facebook', '/auth/facebook' %>.
+	</h3>
+</div>

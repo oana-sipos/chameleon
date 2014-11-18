@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<div class="col-md-8 col-md-offset-2">
 	<% if @logged_in_user %>
 		You are logged in as <%= @logged_in_user.full_name %>. <%= link_to 'Logout', action:'logout', controller:'users' %>
 	<% else %>
@@ -21,6 +22,7 @@
 	<% if flash[:notice] %>
 		<p style='color: blue;'><%= flash[:notice] %></p>
 	<% end %>
+</div>
 
 <%= yield %>
 
