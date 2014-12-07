@@ -19,6 +19,12 @@ class PublicController < ApplicationController
     end
   end
 
+  def create_with_twitter
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    self.current_user = @user
+    redirect to root_path
+  end
+
 	# Called by the login form. Tries to find the user by email and authenticate them;
 	# if the authentication works, redirects to someplace private in the UsersController
   def authenticate
@@ -97,13 +103,18 @@ class PublicController < ApplicationController
 
       # The only alternative is if user creation failed; then new_user.try(:id) will return nil, session[:user_id] will stay nil
       # and the authentication filter in EventsController will redirect back to login.
-
+eee
       # Either way, it's time to go someplace.
       redirect_to action:'index', controller:'events'
 
     end
   end
 
+  protected
+
+    def auth_hash
+      request.env['omniauth.auth']
+    end
 
 
   #######################

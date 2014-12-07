@@ -28,3 +28,6 @@ gem 'bcrypt', '~> 3.1.2'
 
 # Use this gem to permit Facebook authorisation. (alxx)
 gem 'omniauth-facebook'
+
+# Use this gem to permit Twitter authentication. (oana)
+gem 'omniauth-twitter'
